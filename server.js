@@ -9,17 +9,16 @@ app.use(express.json());
 
 const dataFile = path.join(__dirname, "data.json");
 
-// read data
+
 function readData() {
   return JSON.parse(fs.readFileSync(dataFile, "utf8"));
 }
 
-// demo route
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
 
-// GET /movies
+
 app.get("/movies", (req, res) => {
   const data = readData();
   res.json(data.movies);
@@ -93,3 +92,4 @@ app.delete("/movies/:id", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port 3000");
 });
+
